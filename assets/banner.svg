@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="50%" stop-color="#101726"/>
+      <stop offset="100%" stop-color="#07090e"/>
+    </linearGradient>
+
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 42px;
+        fill: url(#text-grad);
+        letter-spacing: -0.5px;
+      }
+      .subtitle-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        fill: #94a3b8;
+        letter-spacing: 0.5px;
+      }
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #0f172a;
+        letter-spacing: 1px;
+      }
+      
+      /* Subtle CSS Animations */
+      @keyframes floatParticle {
+        0%, 100% { transform: translateY(0px) scale(1); opacity: 0.4; }
+        50% { transform: translateY(-12px) scale(1.15); opacity: 0.8; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.08); }
+      }
+      @keyframes flowLine {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      .particle-1 { animation: floatParticle 6s ease-in-out infinite; }
+      .particle-2 { animation: floatParticle 8s ease-in-out infinite 1.5s; }
+      .particle-3 { animation: floatParticle 7s ease-in-out infinite 3s; }
+      .pulse-bg { animation: pulseGlow 10s ease-in-out infinite; transform-origin: center; }
+      .data-stream {
+        stroke-dasharray: 10, 15;
+        animation: flowLine 12s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" rx="16" fill="url(#bg-grad)"/>
+  
+  <!-- Subtle Background Grid -->
+  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none"/>
+    </pattern>
+    <rect width="1200" height="320" fill="url(#grid)"/>
+  </g>
+
+  <!-- Background Animated Graphics (Kept Behind Text) -->
+  <g class="pulse-bg">
+    <circle cx="150" cy="80" r="180" fill="#38bdf8" opacity="0.08" filter="url(#glow)"/>
+    <circle cx="1050" cy="240" r="220" fill="#818cf8" opacity="0.08" filter="url(#glow)"/>
+  </g>
+
+  <!-- Lakehouse Data Mesh Connecting Lines -->
+  <g stroke="url(#text-grad)" stroke-width="1.5" opacity="0.25">
+    <path d="M 80 260 L 220 200 L 380 240 L 520 180" fill="none" class="data-stream"/>
+    <path d="M 700 80 L 840 140 L 980 90 L 1120 160" fill="none" class="data-stream"/>
+  </g>
+
+  <!-- Floating Data Nodes (Background Deco) -->
+  <circle cx="220" cy="200" r="5" fill="#38bdf8" class="particle-1"/>
+  <circle cx="380" cy="240" r="4" fill="#818cf8" class="particle-2"/>
+  <circle cx="840" cy="140" r="6" fill="#34d399" class="particle-3"/>
+  <circle cx="980" cy="90" r="4" fill="#c084fc" class="particle-1"/>
+
+  <!-- Foreground Content Container -->
+  <g transform="translate(80, 0)">
+    
+    <!-- Top Category Pill -->
+    <g transform="translate(0, 55)">
+      <rect width="210" height="30" rx="15" fill="url(#accent-grad)"/>
+      <text x="105" y="20" text-anchor="middle" class="badge-text">DATA LAKEHOUSE 2026</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="145" class="title-text" filter="url(#glow)">
+      Awesome Lakehouse Analytics
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="190" class="subtitle-text">
+      Curated Ecosystem of SaaS Platforms, Open Table Formats &amp; Multi-Engine Analytics
+    </text>
+
+    <!-- Architectural Tags -->
+    <g transform="translate(0, 230)" opacity="0.9">
+      <rect width="125" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="62.5" y="17" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#38bdf8">⚡ Iceberg / Delta</text>
+
+      <rect x="137" width="135" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="204.5" y="17" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#818cf8">🚀 Spark / Trino</text>
+
+      <rect x="284" width="135" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="351.5" y="17" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#34d399">☁️ Cloud SaaS</text>
+    </g>
+  </g>
+</svg>
